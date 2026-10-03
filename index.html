@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>РУТ МИИТ — 130 лет создаём движение | Российский университет транспорта</title>
+  <meta name="description" content="Российский университет транспорта (РУТ МИИТ) отмечает 130-летие: 1896–2026. История, институты, юбилейные мероприятия и приёмная кампания.">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <meta name="theme-color" content="#0056bd" id="themeColor">
+  <meta property="og:title" content="РУТ МИИТ — 130 лет создаём движение">
+  <meta property="og:description" content="Российский университет транспорта. 1896–2026.">
+  <meta property="og:image" content="assets/banner.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Тема применяется до первой отрисовки, чтобы не было «вспышки» светлого фона -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('rut-miit-theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+      } catch (e) { /* приватный режим — остаёмся на светлой теме */ }
+    })();
+  </script>
+
+  <link rel="stylesheet" href="css/styles.css?v=2">
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+
+  <!-- ============ ШАПКА ============ -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+
+      <!-- Переключатель темы: локомотив едет по рельсу -->
+      <button class="theme-switch" id="themeSwitch" type="button" role="switch"
+              aria-checked="false" aria-label="Тёмная тема" title="Переключить тему">
+        <span class="theme-switch__sky" aria-hidden="true"></span>
+        <span class="theme-switch__rail" aria-hidden="true"></span>
+        <span class="theme-switch__train" aria-hidden="true">
+          <svg class="theme-switch__loco" viewBox="0 0 30 15" width="30" height="15" focusable="false">
+            <path class="loco-body" d="M2.2 7.4c0-1.5 1.2-2.7 2.7-2.7h6.4c1.5 0 2.7 1.2 2.7 2.7V14H2.2V7.4Z"/>
+            <path class="loco-body" d="M13.2 9.1h11.7c1.7 0 3 1.3 3 3V14H13.2V9.1Z"/>
+            <rect class="loco-body" x="5.1" y="1.4" width="3.6" height="3.4" rx="1.1"/>
+            <rect class="loco-window" x="4.6" y="6.4" width="5.6" height="5.4" rx="1.3"/>
+            <circle class="loco-light" cx="27.6" cy="11.4" r="1.7"/>
+          </svg>
+          <span class="theme-switch__beam" aria-hidden="true"></span>
+        </span>
+      </button>
+
+      <a class="brand" href="#top" aria-label="РУТ МИИТ — на главную">
+        <img class="brand__logo" src="assets/logo.png" alt="Логотип РУТ МИИТ" width="48" height="48">
+        <span class="brand__text">
+          <strong>РУТ&nbsp;МИИТ</strong>
+          <small>Российский университет транспорта</small>
+        </span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Основная навигация">
+        <a href="#about">О юбилее</a>
+        <a href="#history">История</a>
+        <a href="#institutes">Институты</a>
+        <a href="#events">Мероприятия</a>
+        <a class="nav__external" href="https://miit.ru/" target="_blank" rel="noopener"
+           aria-label="Официальный сайт университета — miit.ru (откроется в новой вкладке)">
+          miit.ru
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+            <path d="M14 4h6v6M20 4l-8.5 8.5M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"
+                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="btn btn--primary btn--sm nav__cta" href="schedule.html">Программа юбилея</a>
+      </nav>
+
+      <a class="btn btn--primary btn--sm header__cta" href="schedule.html">Программа юбилея</a>
+
+      <button class="burger" id="burger" type="button" aria-label="Открыть меню"
+              aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+  <div class="nav-backdrop" id="navBackdrop" hidden></div>
+
+  <main id="main">
+    <!-- ============ ГЛАВНЫЙ ЭКРАН ============ -->
+    <section class="hero" id="top">
+      <div class="hero__banner">
+        <img src="assets/banner.jpg" alt="Баннер: 130 лет Российскому университету транспорта"
+             width="1920" height="768">
+      </div>
+
+      <div class="container hero__content">
+        <p class="hero__eyebrow"><span>1896</span><i aria-hidden="true"></i><span>2026</span></p>
+        <h1 class="hero__title">130 лет создаём <em>движение</em></h1>
+        <p class="hero__lead">
+          Российский университет транспорта — РУТ&nbsp;МИИТ — кузница инженерных кадров
+          для железных дорог, транспорта и логистики страны. От Московского инженерного
+          училища до крупнейшего транспортного университета России.
+        </p>
+
+        <div class="hero__actions">
+          <a class="btn btn--light" href="#events">Юбилейные мероприятия</a>
+          <a class="btn btn--ghost" href="#institutes">Институты и направления</a>
+        </div>
+
+        <!-- Цифры: демонстрационные, заменить на актуальные данные вуза -->
+        <ul class="stats" id="stats">
+          <li class="stats__item">
+            <span class="stats__num" data-count="130">0</span>
+            <span class="stats__label">лет истории</span>
+          </li>
+          <li class="stats__item">
+            <span class="stats__num" data-count="9">0</span>
+            <span class="stats__label">институтов и академий</span>
+          </li>
+          <li class="stats__item">
+            <span class="stats__num" data-count="30" data-suffix="&nbsp;000+">0</span>
+            <span class="stats__label">обучающихся</span>
+          </li>
+          <li class="stats__item">
+            <span class="stats__num" data-count="150" data-suffix="+">0</span>
+            <span class="stats__label">направлений подготовки</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ О ЮБИЛЕЕ ============ -->
+    <section class="section" id="about">
+      <div class="container grid grid--2">
+        <div class="reveal">
+          <p class="kicker">О юбилее</p>
+          <h2 class="h2">Университет, который двигает страну</h2>
+          <p>
+            В 2026 году Российский университет транспорта отмечает 130-летие со дня основания.
+            Все эти годы РУТ&nbsp;МИИТ готовит специалистов, которые строят дороги, управляют
+            перевозками, проектируют подвижной состав и цифровые сервисы для транспорта.
+          </p>
+          <p>
+            Юбилейный год — это научные конференции, встречи выпускников, дни открытых дверей,
+            студенческие фестивали и большой праздник для всего транспортного сообщества.
+          </p>
+
+          <ul class="checklist">
+            <li>Более века непрерывной инженерной школы</li>
+            <li>Научные центры и лаборатории транспортных технологий</li>
+            <li>Партнёрство с компаниями отрасли и РЖД</li>
+            <li>Студенческие отряды, спорт и творчество</li>
+          </ul>
+        </div>
+
+        <div class="about-card reveal">
+          <img class="about-card__logo" src="assets/logo.png" alt="Эмблема РУТ МИИТ" width="140" height="140">
+          <p class="about-card__year">1896 — 2026</p>
+          <p class="about-card__slogan">130 лет создаём движение</p>
+          <dl class="about-card__facts">
+            <div><dt>Основан</dt><dd>1896 год</dd></div>
+            <div><dt>Статус университета</dt><dd>1993 год</dd></div>
+            <div><dt>Современное имя</dt><dd>РУТ (МИИТ), с 2011 года</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ИСТОРИЯ ============ -->
+    <section class="section section--tint" id="history">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="kicker">История</p>
+          <h2 class="h2">130 лет — по главным вехам</h2>
+          <p class="section__sub">Как транспортное училище превратилось в университет транспорта.</p>
+        </div>
+
+        <ol class="timeline">
+          <li class="timeline__item reveal">
+            <span class="timeline__year">1896</span>
+            <div class="timeline__body">
+              <h3>Основание</h3>
+              <p>Открыто Московское инженерное училище ведомства путей сообщения — первое высшее транспортное учебное заведение города.</p>
+            </div>
+          </li>
+          <li class="timeline__item reveal">
+            <span class="timeline__year">1924</span>
+            <div class="timeline__body">
+              <h3>МИИТ</h3>
+              <p>Училище преобразовано в Московский институт инженеров транспорта — аббревиатуру МИИТ знают несколько поколений транспортников.</p>
+            </div>
+          </li>
+          <li class="timeline__item reveal">
+            <span class="timeline__year">1993</span>
+            <div class="timeline__body">
+              <h3>Университет</h3>
+              <p>Вуз получает статус университета путей сообщения и расширяет спектр направлений подготовки.</p>
+            </div>
+          </li>
+          <li class="timeline__item reveal">
+            <span class="timeline__year">2011</span>
+            <div class="timeline__body">
+              <h3>РУТ (МИИТ)</h3>
+              <p>Создан Российский университет транспорта — отраслевой центр образования и науки для всех видов транспорта.</p>
+            </div>
+          </li>
+          <li class="timeline__item timeline__item--now reveal">
+            <span class="timeline__year">2026</span>
+            <div class="timeline__body">
+              <h3>130 лет</h3>
+              <p>Юбилейный год: конференции, встречи выпускников, фестивали и новые проекты развития университета.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ ИНСТИТУТЫ ============ -->
+    <section class="section" id="institutes">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="kicker">Образование</p>
+          <h2 class="h2">Институты и направления</h2>
+          <p class="section__sub">Полный спектр транспортных специальностей — от пути и тяги до цифры и права.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <h3>Институт транспортной техники и систем управления</h3>
+            <p>Локомотивы, вагоны, тяга, автоматика и телемеханика на транспорте.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Институт пути, строительства и сооружений</h3>
+            <p>Железнодорожный путь, мосты, тоннели, изыскания и проектирование.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Институт управления и цифровых технологий</h3>
+            <p>Цифровые сервисы, информационные системы, интеллектуальные транспортные системы.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Институт экономики и финансов</h3>
+            <p>Экономика транспорта, логистика, финансы, менеджмент и учёт.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Институт международных транспортных коммуникаций</h3>
+            <p>Международная логистика, внешнеэкономическая деятельность, языковая подготовка.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Юридический институт</h3>
+            <p>Транспортное право, правовое обеспечение перевозок и таможенное дело.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Российская открытая академия транспорта</h3>
+            <p>Заочное и дистанционное обучение, дополнительное профессиональное образование.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Институт прикладных технологий</h3>
+            <p>Среднее профессиональное образование и прикладные транспортные программы.</p>
+          </article>
+          <article class="card card--accent reveal">
+            <h3>Более 150 программ</h3>
+            <p>Бакалавриат, специалитет, магистратура, аспирантура и ДПО — очно и дистанционно.</p>
+          </article>
+        </div>
+
+        <div class="section__more reveal">
+          <a class="btn btn--primary" href="directions.html">
+            Все направления и условия приёма
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+              <path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <p class="section__more-note">26 программ: описания, экзамены, сроки обучения и будущие профессии</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ МЕРОПРИЯТИЯ ============ -->
+    <section class="section section--tint" id="events">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="kicker">Юбилейный год</p>
+          <h2 class="h2">Мероприятия 130-летия</h2>
+          <p class="section__sub">Расписание демонстрационное — даты уточняются организационным комитетом.</p>
+        </div>
+
+        <ul class="events">
+          <li class="event reveal">
+            <div class="event__date"><strong>14</strong><span>февраля</span></div>
+            <div class="event__body">
+              <h3>Торжественное открытие юбилейного года</h3>
+              <p>Праздничный концерт и встреча выпускников разных лет в главном корпусе.</p>
+            </div>
+            <span class="event__tag">Очно</span>
+          </li>
+          <li class="event reveal">
+            <div class="event__date"><strong>17</strong><span>апреля</span></div>
+            <div class="event__body">
+              <h3>Международная научно-практическая конференция</h3>
+              <p>Транспорт будущего: цифровизация, беспилотные решения, инфраструктура.</p>
+            </div>
+            <span class="event__tag">Наука</span>
+          </li>
+          <li class="event reveal">
+            <div class="event__date"><strong>23</strong><span>мая</span></div>
+            <div class="event__body">
+              <h3>День открытых дверей</h3>
+              <p>Экскурсии по лабораториям, знакомство с институтами и правила приёма 2026.</p>
+            </div>
+            <span class="event__tag">Абитуриентам</span>
+          </li>
+          <li class="event reveal">
+            <div class="event__date"><strong>05</strong><span>сентября</span></div>
+            <div class="event__body">
+              <h3>Студенческий фестиваль «Движение»</h3>
+              <p>Спорт, творчество и студенческие отряды: праздник для всех курсов.</p>
+            </div>
+            <span class="event__tag">Студентам</span>
+          </li>
+          <li class="event event--main reveal">
+            <div class="event__date"><strong>02</strong><span>октября</span></div>
+            <div class="event__body">
+              <h3>Гала-вечер к 130-летию РУТ МИИТ</h3>
+              <p>Главное событие года: награждение, чествование ветеранов и большой концерт.</p>
+            </div>
+            <span class="event__tag">Главное</span>
+          </li>
+        </ul>
+
+        <div class="section__more reveal">
+          <a class="btn btn--primary" href="schedule.html">
+            Полное расписание юбилейного года
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+              <path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <p class="section__more-note">18 событий с февраля по декабрь 2026 года: время, место и формат</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ПРИЗЫВ ============ -->
+    <section class="cta">
+      <div class="container cta__inner reveal">
+        <div>
+          <h2 class="h2 h2--light">Стань частью истории, которой 130 лет</h2>
+          <p class="cta__text">Приёмная кампания 2026 года уже готовится. Узнайте о направлениях, условиях поступления и стипендиях университета.</p>
+        </div>
+        <div class="cta__actions">
+          <a class="btn btn--light" href="directions.html">Выбрать направление</a>
+          <a class="btn btn--ghost" href="https://miit.ru/" target="_blank" rel="noopener">Перейти на miit.ru</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ ПОДВАЛ ============ -->
+  <footer class="footer" id="contacts">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="assets/logo.png" alt="" width="56" height="56">
+        <p>Российский университет транспорта (РУТ&nbsp;МИИТ)</p>
+      </div>
+
+      <div class="footer__col">
+        <h3>Адрес</h3>
+        <!-- Контакты демонстрационные: заменить на актуальные -->
+        <p>Москва, ул. Образцова, д. 9, стр. 9</p>
+        <p>Приёмная комиссия: пн–пт, 10:00–18:00</p>
+      </div>
+
+      <div class="footer__col">
+        <h3>Разделы</h3>
+        <ul>
+          <li><a href="#about">О юбилее</a></li>
+          <li><a href="#history">История</a></li>
+          <li><a href="#institutes">Институты</a></li>
+          <li><a href="#events">Мероприятия</a></li>
+          <li><a href="directions.html">Направления</a></li>
+          <li><a href="schedule.html">Расписание</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h3>Официальные ресурсы</h3>
+        <ul>
+          <li><a href="https://miit.ru/" target="_blank" rel="noopener">miit.ru — сайт университета</a></li>
+          <li><a href="#top">Наверх</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <p>© 1896–2026 РУТ МИИТ. 130 лет создаём движение.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=2"></script>
+</body>
+</html>
