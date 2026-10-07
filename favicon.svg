@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Рельсы Победы">
+  <rect width="64" height="64" rx="14" fill="#87011A"/>
+  <path d="M32 9.5l3.7 7.9 8.7 1.1-6.4 6 1.6 8.6L32 29.1l-7.6 4-1.6-8.6 6.4-6-8.7-1.1z" fill="#fff" transform="translate(0,-1)"/>
+  <g stroke="#fff" stroke-width="3.2" stroke-linecap="round">
+    <path d="M22.5 42 L18 57"/>
+    <path d="M41.5 42 L46 57"/>
+  </g>
+  <g stroke="#C79A3E" stroke-width="2.6" stroke-linecap="round">
+    <path d="M21.4 46.5h21.2"/>
+    <path d="M19.6 51.5h24.8"/>
+  </g>
+</svg>
