@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Научные статьи — проект «Рельсы Победы»</title>
+<meta name="description" content="Научные статьи «Рельсы Победы»: статьи участников проекта по истории транспорта и транспортного образования. Полные тексты в PDF — читать и скачать.">
+<meta name="theme-color" content="#87011A" id="themeColor">
+<meta name="color-scheme" content="light dark">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Научные статьи — Рельсы Победы">
+<meta property="og:description" content="Исторические фотозаметки о битвах, подвигах и роли транспорта в достижении Победы. Проект студентов РУТ (МИИТ).">
+<meta property="og:image" content="assets/logo.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/emblem-720.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+  /* Тема применяется до отрисовки, чтобы не было «вспышки» чужой темы.
+     Сохранённый выбор — 'light'/'dark'; если выбора нет, берём тему системы. */
+  (function () {
+    var root = document.documentElement;
+    var pref = null;
+    try { pref = localStorage.getItem('rp-theme'); } catch (e) {}
+    var dark = false;
+    try { dark = window.matchMedia('(prefers-color-scheme: dark)').matches; } catch (e) {}
+    var theme = (pref === 'light' || pref === 'dark') ? pref : (dark ? 'dark' : 'light');
+    root.setAttribute('data-theme', theme);
+    root.setAttribute('data-theme-source', pref ? 'manual' : 'auto');
+
+    /* При перезагрузке страница должна открываться сверху, а не на том месте,
+       где пользователь остановился: отключаем восстановление прокрутки.
+       Если в адресе остался якорь (#about и т. п.), при перезагрузке убираем его
+       до первой отрисовки — иначе браузер прыгает к этому разделу. */
+    try {
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+      var isReload = false;
+      if (window.performance && performance.getEntriesByType) {
+        var nav = performance.getEntriesByType('navigation')[0];
+        if (nav && nav.type) isReload = nav.type === 'reload';
+      }
+      if (isReload && window.location.hash) {
+        history.replaceState(null, '', window.location.href.split('#')[0]);
+      }
+    } catch (e) {}
+  })();
+</script>
+<link rel="stylesheet" href="css/styles.css">
+<script>
+  /* Анимация появления включается только при работающем JS:
+     если скрипт не загрузится, контент всё равно останется видимым. */
+  (function () {
+    var root = document.documentElement;
+    root.className += ' js';
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        if (!window.__RP_READY) root.className = root.className.replace(/\bjs\b/, '');
+      }, 1500);
+    });
+  })();
+</script>
+</head>
+<body>
+
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-rail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+    <path d="M8 3 5 21M16 3l3 18"/>
+    <path d="M4.6 7h14.8M4 11h16M3.4 15h16.8M3 19h17.2"/>
+  </symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 6h11v10H2zM13 9h4.5l3.5 3.5V16h-8z"/>
+    <circle cx="6.5" cy="18.5" r="1.8"/><circle cx="16.5" cy="18.5" r="1.8"/>
+  </symbol>
+  <symbol id="i-loco" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 16V8h9v8zM13 10h3l3 3v3h-6z"/>
+    <path d="M6 8V5h4v3" />
+    <circle cx="7" cy="18.5" r="1.6"/><circle cx="14" cy="18.5" r="1.6"/>
+    <path d="M2.5 18.5h2M9 18.5h3.4M16 18.5h5.5"/>
+  </symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3 5 5.6v5.6c0 4.3 2.9 8.1 7 9.2 4.1-1.1 7-4.9 7-9.2V5.6z"/>
+    <path d="M9.3 12.2l2 2 3.6-4"/>
+  </symbol>
+  <symbol id="i-tools" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14.5 3.5a4.5 4.5 0 0 0 6 5.9L21 10l-8.5 8.5-2.5 2.5-4-4L8.5 14z"/>
+    <path d="M3 21l4.5-4.5"/>
+  </symbol>
+  <symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2.5 9 12 4.5 21.5 9 12 13.5z"/>
+    <path d="M6.5 11v5c0 1.4 2.5 2.5 5.5 2.5s5.5-1.1 5.5-2.5v-5"/>
+  </symbol>
+  <symbol id="i-helmet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 14a8 8 0 0 1 16 0"/>
+    <path d="M2.5 14h19"/>
+    <path d="M9 6.2C9 4.5 10.3 3 12 3s3 1.5 3 3.2"/>
+  </symbol>
+  <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3.5l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8L6.6 20l1-6L3.3 9.9l6-.9z"/>
+  </symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/>
+    <path d="M9 12h6M9 15.5h6M9 8.5h2"/>
+  </symbol>
+  <symbol id="i-quote" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M9.6 5.6C6.4 6.9 4.4 9.7 4.4 13.2c0 3 1.7 5.2 4.2 5.2 2 0 3.5-1.5 3.5-3.5 0-1.9-1.3-3.3-3.1-3.3-.3 0-.7 0-1 .2.4-1.7 1.7-3.2 3.4-4.1zM19.4 5.6c-3.2 1.3-5.2 4.1-5.2 7.6 0 3 1.7 5.2 4.2 5.2 2 0 3.5-1.5 3.5-3.5 0-1.9-1.3-3.3-3.1-3.3-.3 0-.7 0-1 .2.4-1.7 1.7-3.2 3.4-4.1z"/>
+  </symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 12h14M13 6l6 6-6 6"/>
+  </symbol>
+  <symbol id="i-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 19V5M6 11l6-6 6 6"/>
+  </symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 11.5c0 4.14-4.03 7.5-9 7.5-1.03 0-2.02-.15-2.93-.42L5 20.5l1.05-3.35C4.19 15.85 3 13.8 3 11.5 3 7.36 7.03 4 12 4s9 3.36 9 7.5z"/>
+    <path d="M8.6 9.7l2.1 4.3 4.3-4.3"/>
+  </symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 14.4A8.5 8.5 0 0 1 9.6 4a8.6 8.6 0 1 0 10.4 10.4z"/>
+  </symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="4.2"/>
+    <path d="M12 2.6v2.2M12 19.2v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.6 12h2.2M19.2 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/>
+  </symbol>
+  <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14.5 4H20v5.5"/>
+    <path d="M20 4l-8.6 8.6"/>
+    <path d="M18.5 14v4.5a1.5 1.5 0 0 1-1.5 1.5H5.5A1.5 1.5 0 0 1 4 18.5V7a1.5 1.5 0 0 1 1.5-1.5H10"/>
+  </symbol>
+</svg>
+
+
+<a class="skip-link" href="#papers">Перейти к содержанию</a>
+<div class="progress" aria-hidden="true"><span class="progress__bar" id="progressBar"></span></div>
+
+<!-- ============ ШАПКА ============ -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a class="brand" href="index.html" aria-label="Рельсы Победы — на главную">
+      <span class="brand__mark"><img src="assets/emblem-720.png" alt="" width="720" height="284"></span>
+      <span class="brand__text">
+        <strong>Рельсы Победы</strong>
+        <small>1941 — 1945</small>
+      </span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Основная навигация">
+      <ul class="nav__list">
+        <li><a href="index.html#about">О проекте</a></li>
+        <li><a href="index.html#timeline">Хроника</a></li>
+        <li><a href="index.html#transport">Транспорт</a></li>
+        <li><a href="index.html#education">Транспортное образование</a></li>
+        <li><a href="index.html#videos">Видеоматериалы</a></li>
+        <li><a href="index.html#notes">Фотозаметки</a></li>
+        <li><a href="papers.html" class="is-active" aria-current="page">Научные статьи</a></li>
+        <li><a href="index.html#founder">Основатель</a></li>
+        <li class="nav__social-item"><a href="index.html#vk">Мы во ВКонтакте</a></li>
+        <li><a class="nav__cta" href="index.html#join">Присоединиться</a></li>
+      </ul>
+    </nav>
+
+    <div class="header__actions">
+      <a class="social" href="https://vk.ru/historyoftransportinrussia" target="_blank" rel="noopener noreferrer" title="Сообщество «Рельсы Победы» во ВКонтакте" aria-label="Сообщество «Рельсы Победы» во ВКонтакте (откроется в новой вкладке)">
+        <svg class="ico" aria-hidden="true"><use href="#i-chat"></use></svg>
+      </a>
+
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Переключить тему оформления" title="Светлая или тёмная тема">
+        <svg class="ico ico--moon" aria-hidden="true"><use href="#i-moon"></use></svg>
+        <svg class="ico ico--sun" aria-hidden="true"><use href="#i-sun"></use></svg>
+      </button>
+
+      <button class="burger" id="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="page-head">
+    <div class="hero__pattern" aria-hidden="true"></div>
+    <div class="container page-head__inner">
+      <nav class="breadcrumb" aria-label="Вы находитесь здесь">
+        <a href="index.html">Главная</a>
+        <span class="breadcrumb__sep" aria-hidden="true">/</span>
+        <span>Научные статьи</span>
+      </nav>
+      <p class="eyebrow eyebrow--light">Исторический проект «Рельсы Победы» · 1941—1945</p>
+      <h1 class="page-head__title">Научные статьи</h1>
+      <p class="page-head__lead">Научные статьи, подготовленные основателем проекта и участниками группы. Все файлы приложены к сайту — их можно читать прямо в браузере или скачать себе.</p>
+      <dl class="page-head__facts">
+        <div><dt>3</dt><dd>статьи с полными текстами</dd></div>
+        <div><dt>2020—2025</dt><dd>годы публикации</dd></div>
+        <div><dt>РИНЦ</dt><dd>статьи проиндексированы в eLIBRARY.RU</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ НАУЧНЫЕ ТРУДЫ ГРУППЫ ============ -->
+  <section class="section section--tinted" id="papers">
+    <div class="container">
+      <header class="section__head reveal">
+        <p class="eyebrow">Научные статьи</p>
+        <h2 class="section__title">Исследования участников проекта</h2>
+        <p class="section__lead">Научные статьи, подготовленные основателем проекта и участниками группы. Все файлы приложены к сайту — их можно читать прямо в браузере или скачать.</p>
+      </header>
+
+      <div class="papers">
+        <article class="paper reveal">
+          <div class="paper__head">
+            <span class="paper__ico"><svg class="ico" aria-hidden="true"><use href="#i-doc"></use></svg></span>
+            <div>
+              <p class="paper__kind">Статья · 2020 · о проекте</p>
+              <p class="paper__authors">А. В. Танцевова, А. Д. Сергеев</p>
+            </div>
+          </div>
+          <h3 class="paper__title">«Сохраняя память о Великой Отечественной войне»: группа «Рельсы Победы» в социальной сети «ВКонтакте»</h3>
+          <p class="paper__source">Материалы Всероссийской научной конференции «Заоблачный фронт: боевые действия в высокогорных районах Кавказа в годы Великой Отечественной войны и их значение» (Карачаевск, КЧГУ им. У. Д. Алиева, 21–22 декабря 2020 г.)</p>
+          <p class="paper__about">О том, как студенты РУТ (МИИТ) сохраняют историческую память о войне средствами социальных сетей: о создании группы «Рельсы Победы», публикациях о битве за Кавказ и о роли железных дорог.</p>
+          <div class="paper__tags">
+            <span>историческая память</span><span>битва за Кавказ</span><span>железные дороги</span><span>социальные сети</span>
+          </div>
+          <div class="paper__foot">
+            <a class="btn btn--primary" href="assets/docs/tantsevova-sergeev-relsy-pobedy-vk-2020.pdf" target="_blank" rel="noopener noreferrer">Читать PDF <svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+            <a class="btn btn--ghost" href="assets/docs/tantsevova-sergeev-relsy-pobedy-vk-2020.pdf" download>Скачать</a>
+            <span class="paper__size">PDF · 11 страниц · 0,4 МБ</span>
+          </div>
+        </article>
+
+        <article class="paper reveal">
+          <div class="paper__head">
+            <span class="paper__ico"><svg class="ico" aria-hidden="true"><use href="#i-doc"></use></svg></span>
+            <div>
+              <p class="paper__kind">Статья · 2024</p>
+              <p class="paper__authors">А. В. Танцевова</p>
+            </div>
+          </div>
+          <h3 class="paper__title">«Да здравствует МИИТ!»: к 100-летию создания Московского института инженеров транспорта (по материалам вузовской периодики)</h3>
+          <p class="paper__source">Пространство науки / Science space. 2024. Т. 1, № 3. С. 498–516. DOI: 10.33873/3034-4379.2024.1-3.498-516</p>
+          <p class="paper__about">История создания крупнейшего транспортного вуза страны: как институт начинался, какие задачи решал и что писала о нём институтская газета «Студент-транспортник» в 1924 году.</p>
+          <div class="paper__tags">
+            <span>история транспортного образования</span><span>МИИТ</span><span>1920-е гг.</span><span>вузовская периодика</span>
+          </div>
+          <div class="paper__foot">
+            <a class="btn btn--primary" href="assets/docs/tantsevova-da-zdravstvuet-miit-2024.pdf" target="_blank" rel="noopener noreferrer">Читать PDF <svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+            <a class="btn btn--ghost" href="assets/docs/tantsevova-da-zdravstvuet-miit-2024.pdf" download>Скачать</a>
+            <span class="paper__size">PDF · 19 страниц · 0,8 МБ</span>
+          </div>
+        </article>
+
+        <article class="paper reveal">
+          <div class="paper__head">
+            <span class="paper__ico"><svg class="ico" aria-hidden="true"><use href="#i-doc"></use></svg></span>
+            <div>
+              <p class="paper__kind">Статья · 2025</p>
+              <p class="paper__authors">А. В. Танцевова</p>
+            </div>
+          </div>
+          <h3 class="paper__title">Политическое просвещение молодёжи в 1920-е годы: из истории подготовки советских инженеров транспорта</h3>
+          <p class="paper__source">Вестник Владикавказского научного центра РАН. 2025. Т. 25, № 4. С. 96–102. DOI: 10.46698/o1626-9183-4508-u</p>
+          <p class="paper__about">Формы и методы политического просвещения в советской высшей школе 1920-х годов на примере Московского института инженеров транспорта: кружки, клубы, шефство, работа партийных и комсомольских организаций.</p>
+          <div class="paper__tags">
+            <span>история науки</span><span>инженеры транспорта</span><span>комсомол</span><span>1920-е гг.</span>
+          </div>
+          <div class="paper__foot">
+            <a class="btn btn--primary" href="assets/docs/tantsevova-politprosveshchenie-1920e-2025.pdf" target="_blank" rel="noopener noreferrer">Читать PDF <svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+            <a class="btn btn--ghost" href="assets/docs/tantsevova-politprosveshchenie-1920e-2025.pdf" download>Скачать</a>
+            <span class="paper__size">PDF · 7 страниц · 0,4 МБ</span>
+          </div>
+        </article>
+      </div>
+
+      <p class="notes__more reveal">Материалы публикуются в научных изданиях и доступны в базе РИНЦ (eLIBRARY.RU). Если у вас есть статьи по истории транспорта и транспортного образования — присылайте их в сообщество проекта, мы добавим их в этот раздел.</p>
+    </div>
+  </section>
+
+  <section class="join">
+    <div class="container join__inner reveal">
+      <p class="eyebrow eyebrow--light">Присоединиться к проекту</p>
+      <h2 class="join__title">«Здесь живет история. Сохраним память вместе!»</h2>
+      <p class="join__text">Если у вас есть научная работа, архивный документ или семейная история о транспорте и транспортном образовании — присылайте их в сообщество проекта: мы опубликуем материал и добавим его в этот раздел.</p>
+      <div class="join__actions">
+        <a class="btn btn--primary" href="https://vk.ru/historyoftransportinrussia" target="_blank" rel="noopener noreferrer"><svg class="ico" aria-hidden="true"><use href="#i-chat"></use></svg> Написать нам во ВКонтакте</a>
+        <a class="btn btn--ghost" href="index.html">Вернуться на главную</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <img src="assets/logo-640.png" alt="Логотип проекта «Рельсы Победы»" width="640" height="409">
+      <p class="footer__slogan">«Здесь живет история. Сохраним память вместе!»</p>
+      <a class="footer__vk" href="https://vk.ru/historyoftransportinrussia" target="_blank" rel="noopener noreferrer">
+        <svg class="ico" aria-hidden="true"><use href="#i-chat"></use></svg>
+        Сообщество «Рельсы Победы»: vk.ru/historyoftransportinrussia
+      </a>
+    </div>
+    <div class="footer__col">
+      <h3>Разделы</h3>
+      <ul>
+        <li><a href="index.html#about">О проекте</a></li>
+        <li><a href="index.html#timeline">Хроника</a></li>
+        <li><a href="index.html#transport">Транспорт и Победа</a></li>
+        <li><a href="index.html#notes">Исторические фотозаметки</a></li>
+        <li><a href="index.html#education">Транспортное образование</a></li>
+        <li><a href="index.html#videos">Видеоматериалы</a></li>
+        <li><a href="index.html#vk">Мы во ВКонтакте</a></li>
+        <li><a href="papers.html">Научные статьи</a></li>
+        <li><a href="index.html#sources">Источники</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h3>Проект</h3>
+      <ul>
+        <li>Рельсы Победы · 1941—1945</li>
+        <li>Студенты РУТ (МИИТ)</li>
+        <li>Основатель проекта: Танцевова Анастасия Владимировна, к.и.н.</li>
+        <li><a href="https://vk.ru/historyoftransportinrussia" target="_blank" rel="noopener noreferrer">Сообщество во ВКонтакте</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <p>© 2020—<span id="year">2025</span> Исторический проект «Рельсы Победы». 80 лет Великой Победы!</p>
+    <p>Сделано студентами Российского университета транспорта</p>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" type="button" aria-label="Наверх">
+  <svg class="ico" aria-hidden="true"><use href="#i-up"></use></svg>
+</button>
+
+<script src="js/main.js"></script>
+</body>
+</html>
